@@ -1,0 +1,16 @@
+body{
+    background: #E1888C;
+    background: -webkit-linear-gradient(top,#ffffff,#C7232B);
+    background-attachment: fixed;
+}
+.navigation{
+    padding-right: 2rem;
+    text-indent: 20px;
+}
+.banner{
+    background: #830001;
+    background: -webkit-radial-gradient(center,#ffffff,#830001);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

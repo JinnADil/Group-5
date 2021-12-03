@@ -1,26 +1,24 @@
-<?php
+<h2>Login to Your Account</h2>
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Application</title> 
+<?php 
+	if($this->uri->segment(2)=="index"){
+		echo '<p>Successfully Registered</p>';
+	}
+?>
 
-</head>
-<h3>Log In</h3>
-<body>
-<a href="<?=base_url('wp_controller/')?>">Back</a>
+<a href="<?php echo base_url('wp_controller/home'); ?>">Back</a>
 
-	<form method="post" action="<?php echo base_url()?>wp_controller/loginnow">
+<form method="post" action="<?php echo base_url()?>wp_controller/login">
 													<!-- controller/function -->
 	<div>
 		<label>Username:</label>
 		<input type="text" name="user" placeholder="Enter Username"/>
+		<span><?php echo form_error("user")?></span>
 	</div>
 		<div>
 		<label>Password:</label>
 		<input type="password" name="pass" placeholder="Enter Password"/>
+		<span><?php echo form_error("pass")?></span>
 	</div>
 
 	<div>
@@ -31,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	if($this->session->flashdata('error')) {	?>
 	<p> <?=$this->session->flashdata('error')?></p>
 <?php }?>
+
 </form>
 
-</body>
-</html>
+<p>Don't have an account? <a href="<?php echo base_url('wp_controller/register'); ?>">Register</a></p>
