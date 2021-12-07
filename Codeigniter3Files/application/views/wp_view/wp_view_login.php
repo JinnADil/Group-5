@@ -1,35 +1,36 @@
-<h2>Login to Your Account</h2>
-
-<?php 
-	if($this->uri->segment(2)=="index"){
-		echo '<p>Successfully Registered</p>';
-	}
-?>
-
-<a href="<?php echo base_url('wp_controller/home'); ?>">Back</a>
+<link rel="stylesheet" href="<?php echo base_url('assets/css/login.css')?>">
 
 <form method="post" action="<?php echo base_url()?>wp_controller/login">
-													<!-- controller/function -->
-	<div>
-		<label>Username:</label>
-		<input type="text" name="user" placeholder="Enter Username"/>
-		<span><?php echo form_error("user")?></span>
-	</div>
-		<div>
-		<label>Password:</label>
-		<input type="password" name="pass" placeholder="Enter Password"/>
-		<span><?php echo form_error("pass")?></span>
-	</div>
 
-	<div>
-		<input type="submit" name="insert" value="Log In"/>
-	</div>
+<div class="container my-5 bg-light border border-secondary rounded-3">
+        <h5 class="text-center pt-3">User Authentication</h5>
+        <hr class="style1">
+        <div class="input-group mb-3 ">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fa fa-user py-1"></i></span>
+            </div>
 
-	<?php
+            <input type="text" class="form-control" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="#">
+			<span><?php echo form_error("email")?></span>
+		</div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="#"><i class="fa fa-unlock-alt py-1"></i></span>
+            </div>
+            <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Password" aria-describedby="#">
+			<span><?php echo form_error("pass")?></span>
+		</div>
+        <div class="col-md-12 text-center">
+            <button type="submit" name="insert" value="Log in" class="btn btn-outline-secondary w-75">Login</button>
+        </div>
+        
+        <p class="text-center">Forget your password?</p>
+
+		<?php
 	if($this->session->flashdata('error')) {	?>
 	<p> <?=$this->session->flashdata('error')?></p>
 <?php }?>
 
-</form>
-
-<p>Don't have an account? <a href="<?php echo base_url('wp_controller/register'); ?>">Register</a></p>
+      </div>
+	  </form>

@@ -26,43 +26,49 @@ class wp_controller extends CI_Controller {
 	}
 
 	function register(){	
-		$data = $userData = array();								
+		$data = $userData = array();						
 		if($_SERVER['REQUEST_METHOD']=='POST') 				
 		{
 			$this->load->library('form_validation');		
 			$this->form_validation->set_rules('user','Username','required');		
 			$this->form_validation->set_rules('pass','Password','required');
+			$this->form_validation->set_rules('conf_pass', 'confirm password', 'required|matches[pass]');
 			$this->form_validation->set_rules('fname','First Name','required');
 			$this->form_validation->set_rules('mname','Middle Name','required');
 			$this->form_validation->set_rules('lname','Surname','required');
 			$this->form_validation->set_rules('addrs','Address','required');
 			$this->form_validation->set_rules('phnum','Phone Number','required');
-			$this->form_validation->set_rules('email','Email Address','required');
-			$this->form_validation->set_rules('bday','Birthday','required');
-		
+			$this->form_validation->set_rules('email','Email Address','required|valid_email|callback_email_check');
+
 				$username = $this->input->post('user');			
 				$password = $this->input->post('pass');			
 				$firstname = $this->input->post('fname');
 				$middlename = $this->input->post('mname');
 				$surname = $this->input->post('lname');
+				$extension = $this->input->post('extension');
 				$address = $this->input->post('addrs');
 				$phonenumber = $this->input->post('phnum');
 				$emailaddress = $this->input->post('email');
-				$birthday = $this->input->post('bday');
+				$year = $this->input->post('year');
+				$day = $this->input->post('day');
+				$month = $this->input->post('month');
 				$sex = $this->input->post('sex');		
 
-
-				$this->load->model("wp_model_app");				
+				$this->load->model("wp_model_app");
 				$userData = array(									
 					'sender_user' => $username,					
 					'sender_pass' => $password,					
 					'sender_fname' => $firstname,
 					'sender_mname' => $middlename,
 					'sender_lname' => $surname,
+					'sender_extension' => $extension,
 					'sender_addrs' => $address,
 					'sender_phnum' => $phonenumber,
 					'sender_email' => $emailaddress,
-					'sender_bday' => $birthday,
+					'sender_tmp_email' => $emailaddress,
+					'sender_year' => $year,
+					'sender_month' => $month,
+					'sender_day' => $day,
 					'sender_sex' => $sex,
 					'sender_status' => "1"						
 				);				
@@ -72,7 +78,7 @@ class wp_controller extends CI_Controller {
 					$this->db->set($userData);			
 					$this->wp_model_app->update_data($data, $this->input->post("hidden_id"));	
 					redirect(base_url()."wp_controller/account");
-				}
+				} 
 
 
 				if($this->form_validation->run()==TRUE){
@@ -88,7 +94,8 @@ class wp_controller extends CI_Controller {
 				}
 				else{
 					$data['error_arr'] = 'Please fill all the mandatory fields.';
-				} 
+				}
+
 			}
 			$data['user'] = $userData;
 			$this->load->view('wp_element/wp_header');
@@ -120,7 +127,7 @@ class wp_controller extends CI_Controller {
 
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
-			$this->form_validation->set_rules('user','Username','required');
+			$this->form_validation->set_rules('email','Email','required');
 			$this->form_validation->set_rules('pass','Password','required');
 
 			if($this->form_validation->run()==TRUE)
@@ -128,7 +135,7 @@ class wp_controller extends CI_Controller {
 				$connect = array( 
                     'returnType' => 'single', 
                     'conditions' => array( 
-                        'sender_user'=> $this->input->post('user'), 
+                        'sender_email'=> $this->input->post('email'), 
                         'sender_pass' =>$this->input->post('pass'), 
 						'sender_status' => '1',
                     ) 
@@ -206,7 +213,7 @@ class wp_controller extends CI_Controller {
         redirect('wp_controller/home'); 
     } 
 
-	public function deactivate(){
+	public function delete(){
 		$data = array(); 
         if($this->isUserLoggedIn){ 
 
@@ -216,13 +223,13 @@ class wp_controller extends CI_Controller {
             $data['user'] = $this->wp_model_app->getRows($con); 
 			 
 			$this->load->view('wp_element/wp_header', $data); 
-			$this->load->view('wp_view/wp_view_deactivate', $data); 
+			$this->load->view('wp_view/wp_view_delete', $data); 
 			$this->load->view('wp_element/wp_footer');
         }
 	}
 
-	public function deact(){
-		if($this->input->post("deactivate"))
+	public function del(){
+		if($this->input->post("del"))
 				{
 					$data = array();
 
@@ -237,7 +244,7 @@ class wp_controller extends CI_Controller {
 			
 					if($_SERVER['REQUEST_METHOD']=='POST')
 					{
-						$this->form_validation->set_rules('user','Username','required');
+						$this->form_validation->set_rules('email','Email Address','required');
 						$this->form_validation->set_rules('pass','Password','required');
 			
 						if($this->form_validation->run()==TRUE)
@@ -245,7 +252,7 @@ class wp_controller extends CI_Controller {
 							$connect = array( 
 								'returnType' => 'single', 
 								'conditions' => array( 
-									'sender_user'=> $this->input->post('user'), 
+									'sender_email'=> $this->input->post('email'), 
 									'sender_pass' =>$this->input->post('pass'), 
 									'sender_status' => '1',
 								) 
@@ -255,7 +262,8 @@ class wp_controller extends CI_Controller {
 
 								$this->load->model("wp_model_app");
 								$userData = array(									
-									'sender_status' => '0'						
+									'sender_status' => '0',
+									'sender_email'	=> 'DELETED'					
 								);
 
 								$this->db->set($userData);			
@@ -265,17 +273,33 @@ class wp_controller extends CI_Controller {
 								$this->session->unset_userdata('userId'); 
 								$this->session->sess_destroy();
 
-								redirect(base_url().'wp_controller/login'); 
+								redirect(base_url().'wp_controller/home'); 
 							}else{ 
 								$data['error_msg'] = 'Wrong username or password, please try again.'; 
 							}
 						}else{ 
 						$data['error_msg'] = 'Please fill all the mandatory fields.'; 
 						}
-						redirect('wp_controller/deactivate');
+						redirect('wp_controller/delete');
 			
 					}
 				}
 	}
+
+	public function email_check($str){ 
+        $con = array( 
+            'returnType' => 'count', 
+            'conditions' => array( 
+                'sender_email' => $str 
+            ) 
+        ); 
+        $checkEmail = $this->wp_model_app->getRows($con); 
+        if($checkEmail > 0){ 
+            $this->form_validation->set_message('email_check', 'The given email already exists.'); 
+            return FALSE; 
+        }else{ 
+            return TRUE; 
+        } 
+    }
 
 }

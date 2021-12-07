@@ -1,3 +1,5 @@
+</head>
+<body>
 <h2>Dashboard</h2>
 
 <h2>Welcome <?php echo $user['sender_user']; ?>!</h2>
