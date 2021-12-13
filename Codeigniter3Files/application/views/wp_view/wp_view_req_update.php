@@ -1,7 +1,8 @@
-
+</head>
+<body>
 <div class="container my-5 bg-light">
       <div class="row justify-content-evenly">
-	  <h2>Register Account</h2>
+	  <h2>Update Information</h2>
         <div class="col-lg-6">
           <h5 class="my-4">Personal Information:</h5> 
 
@@ -9,7 +10,7 @@
             <div class="row">
 			<label class="label col-md-4 control label">First Name:</label>
 	    				<div class="col-lg-8 mb-3">
-	    				<input type="text" name="fname" class="form-control" placeholder="First name" aria-label="First name">
+	    				<input type="text" name="fname" value="<?php echo $user['sender_fname']?>" class="form-control" placeholder="First name" aria-label="First name" required>
 						<span><?php echo form_error("fname");?> </span>    
 						</div>
             </div>
@@ -17,7 +18,7 @@
             <div class="row">
 			<label class="label col-md-4 control label">Middle Name:</label>
         				<div class="col-lg-8 mb-3">
-        				<input type="text" name="mname" class="form-control" placeholder="Middle name" aria-label="Middle name">
+        				<input type="text" name="mname" value="<?php echo $user['sender_mname']?>" class="form-control" placeholder="Middle name" aria-label="Middle name" required>
 						<span><?php echo form_error("mname");?> </span>    
 						</div>
             </div>
@@ -25,7 +26,7 @@
 			<div class="row">
 			<label class="label col-md-4 control label">Last Name:</label>
 			     	  	<div class="col-lg-8 mb-3">
-					  	<input type="text" name="lname" class="form-control" placeholder="Last Name" aria-label="Last name"> 
+					  	<input type="text" name="lname" value="<?php echo $user['sender_lname']?>" class="form-control" placeholder="Last Name" aria-label="Last name" required> 
 						<span><?php echo form_error("lname");?> </span>
     					</div>
             </div>
@@ -33,20 +34,21 @@
 			<div class="row">
               <label class="label col-md-4 control label">Extension:</label>
               <div class="col-lg-8 mb-3">
-                <select name="extension" class="form-select form-select-md" aria-label=".form-select-md example">
-                  <option selected value=" ">none</option>
-				          <option value="Jr.">Jr.</option>
+                <select name="extension"  class="form-select form-select-md" aria-label=".form-select-md example" required>
+                  <option selected value=" "><?php echo $user['sender_extension']?></option>
+                  <option value="Jr.">Jr.</option>
                   <option value="Sr.">Sr.</option>
-                  <option value="III">III</option> 
-                </select>
+                  <option value="III">III</option>
+                  <option value=" ">none</option>
+				          </select>
               </div>
             </div>
 
             <div class="row">
               <label class="label col-md-3 control label">Birthdate:</label>
               <div class="col-lg-3 col-sm-3 mb-3">
-                <select name="month" class="form-select form-select-md" aria-label=".form-select-md example">
-                  <option selected>Month</option>
+                <select name="month" class="form-select form-select-md" aria-label=".form-select-md example" required>
+                <option selected><?php echo $user['sender_month']?></option>
                   <option value="January">January</option>
                   <option value="February">February</option>
                   <option value="March">March</option>
@@ -63,8 +65,8 @@
               </div>
 
               <div class="col-lg-3 col-sm-3 mb-3">
-                <select name="day" class="form-select form-select-md" aria-label=".form-select-md example">
-                  <option selected>Day</option>
+                <select name="day" class="form-select form-select-md" aria-label=".form-select-md example" required>
+                  <option selected><?php echo $user['sender_day']?></option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -100,8 +102,8 @@
               </div>
               
               <div class="col-lg-3 col-sm-3 mb-3">
-                <select name="year" class="form-select form-select-md" aria-label=".form-select-md example">
-                  <option selected>Year</option> <!-- 1990 - 2022 -->
+                <select name="year" class="form-select form-select-md" aria-label=".form-select-md example" required>
+                  <option selected><?php echo $user['sender_year']?></option> <!-- 1990 - 2022 -->
                   <option value="1990">1990</option>
                   <option value="1991">1991</option>
                   <option value="1992">1992</option>
@@ -142,16 +144,8 @@
             <div class="row">
 			<label class="label col-md-4 control label">Mobile Number:</label>
     					<div class="col-lg-8 mb-3">
-    					<input type="text" name="phnum" class="form-control" placeholder="Ex: 2222-222-2222" aria-label="Mobile Number">
+    					<input type="text" name="phnum" value="<?php echo $user['sender_phnum']?>" class="form-control" placeholder="Ex: 2222-222-2222" aria-label="Mobile Number" required>
 						<span><?php echo form_error("phnum");?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Receiving Email Address:</label>
-    					<div class="col-lg-8 mb-3">
-    					<input type="text" name="rec_email" class="form-control" placeholder="Email Address" aria-label="Recieving Email Address">
-						<span><?php echo form_error("rec_email");?> </span>
 						</div>
             </div>
 
@@ -159,25 +153,25 @@
 			<label class="label col-md-4 control label">Address:</label>
         				<div class="col-lg-8 mb-3">
             <label>House Lot Block no.</label>
-    					          <input type="text" name="houselt" class="form-control" placeholder="Block * Lot *" aria-label="houseLot">
+    					          <input type="text" name="houselt" value="<?php echo $user['sender_houselt']?>" class="form-control" placeholder="Block * Lot *" aria-label="houseLot">
 						            <span><?php echo form_error("houselt");?> </span>
             <label>Street</label>
-                        <input type="text" name="strt" class="form-control" placeholder="Street" aria-label="street">
+                        <input type="text" name="strt" value="<?php echo $user['sender_strt']?>" class="form-control" placeholder="Street" aria-label="street">
 						            <span><?php echo form_error("strt");?> </span>
             <label>Subdivision</label>
-                        <input type="text" name="subd" class="form-control" placeholder="Subdivision" aria-label="subdivision">
+                        <input type="text" name="subd" value="<?php echo $user['sender_subd']?>" class="form-control" placeholder="Subdivision" aria-label="subdivision">
 						            <span><?php echo form_error("subd");?> </span>
             <label>Baranggay</label>
-                        <input type="text" name="brgy" class="form-control" placeholder="Baranggay" aria-label="baranggay">
+                        <input type="text" name="brgy" value="<?php echo $user['sender_brgy']?>" class="form-control" placeholder="Baranggay" aria-label="baranggay">
 						            <span><?php echo form_error("brgy");?> </span>
             <label>City/Municipality</label>
-                        <input type="text" name="municity" class="form-control" placeholder="City/Municipality" aria-label="city">
+                        <input type="text" name="municity" value="<?php echo $user['sender_municity']?>" class="form-control" placeholder="City/Municipality" aria-label="city">
 						            <span><?php echo form_error("municity");?> </span>
             <label>Province/State</label>
-                        <input type="text" name="provi" class="form-control" placeholder="Province" aria-label="province">
+                        <input type="text" name="provi" value="<?php echo $user['sender_provi']?>" class="form-control" placeholder="Province" aria-label="province">
 						            <span><?php echo form_error("provi");?> </span>
             <label>Zipcode</label>
-                        <input type="text" name="zip" class="form-control" placeholder="Zipcode" aria-label="zipcode">
+                        <input type="text" name="zip" value="<?php echo $user['sender_zip']?>" class="form-control" placeholder="Zipcode" aria-label="zipcode">
 						<span><?php echo form_error("zip");?> </span>
 						</div>
             </div>
@@ -210,55 +204,16 @@
        
         
         
-        <div class="col-lg-6 ">
-          
-          <h5 class="my-4">Account Information:</h5>
         
-            <div class="row">
-			<label class="label col-md-4 control label">Username:</label>
-    					<div class="col-lg-8 mb-3">
-    					<input type="text" name="user" class="form-control" placeholder="Username" aria-label="Username">
-						<span><?php echo form_error("user");?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Email Address:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="text" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
-						<span><?php echo form_error("email");?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Password:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="password" name="pass" class="form-control" placeholder="Password" aria-label="Password">
-						<span><?php echo form_error("pass"); ?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Confirm Password:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="password" name="conf_pass" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password">
-						<span><?php echo form_error("conf_pass"); ?> </span>
-						</div>
-            </div>
-
-          </div>  
         </div>  
+		<div>
+						<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
+					</div>
 
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-		<input class="btn-lg btn-primary m-4" type="submit" value="Register" name="btnadd">    
-	</div>
-
-  
-  <?php  
-        if(!empty($error_arr)){ 
-            echo '<p class="status-msg error">'.$error_arr.'</p>'; 
-        } 
-    ?>
+					<div class="d-grid gap-1 d-md-flex justify-content-md-end">
+						<button class="btn-lg btn-primary m-4" type="button"><a style="text-decoration: none; color: white;" href="<?php echo base_url('wp_controller/request'); ?>">Back</a></button>
+						<input class="btn-lg btn-primary m-4" type="submit" value="Update" name="update_docu">
+        			</div>
         
       </div>
 

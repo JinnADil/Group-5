@@ -10,22 +10,29 @@
               <span class="input-group-text" id=""><i class="fa fa-user py-1"></i></span>
             </div>
 
-            <input type="text" class="form-control" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="#">
-			<span><?php echo form_error("email")?></span>
-		</div>
-
+            <input type="text" class="form-control" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="#">   
+        </div>
+        <?php echo form_error("email")?> 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="#"><i class="fa fa-unlock-alt py-1"></i></span>
             </div>
             <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Password" aria-describedby="#">
-			<span><?php echo form_error("pass")?></span>
 		</div>
+        <?php echo form_error("pass")?>
         <div class="col-md-12 text-center">
             <button type="submit" name="insert" value="Log in" class="btn btn-outline-secondary w-75">Login</button>
         </div>
         
         <p class="text-center">Forget your password?</p>
+
+        <?php  
+        if(!empty($success_msg)){ 
+            echo '<p class="status-msg success">'.$success_msg.'</p>'; 
+        }elseif(!empty($error_msg)){ 
+            echo '<p class="status-msg error">'.$error_msg.'</p>'; 
+        } 
+    ?>
 
 		<?php
 	if($this->session->flashdata('error')) {	?>

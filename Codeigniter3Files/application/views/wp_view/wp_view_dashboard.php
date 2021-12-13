@@ -6,6 +6,12 @@
 
 <a href="<?php echo base_url('wp_controller/account'); ?>">Account</a>
 
+<a href="<?php echo base_url('wp_controller/request'); ?>">Request Documents</a>
+
+<a href="<?php echo base_url('wp_controller/history'); ?>">History</a>
+
+<a href="<?php echo base_url('wp_controller/receive'); ?>">Receive Documents</a>
+
 <a href="<?php echo base_url('wp_controller/logout'); ?>">Logout</a>
 
 
