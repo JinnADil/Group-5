@@ -2,7 +2,7 @@
 <body>
 <div class="container my-5 bg-light">
       <div class="row justify-content-evenly">
-	  <h2>Update Information</h2>
+	  <h2>Update Account Information</h2>
         <div class="col-lg-6">
         <h5 class="my-4">Account Information:</h5> 
 

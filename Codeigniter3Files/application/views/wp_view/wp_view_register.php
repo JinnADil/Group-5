@@ -1,11 +1,18 @@
-
 <div class="container my-5 bg-light">
-      <div class="row justify-content-evenly">
-	  <h2>Register Account</h2>
-        <div class="col-lg-6">
-          <h5 class="my-4">Personal Information:</h5> 
 
-	<form method="post" action="<?php echo base_url()?>wp_controller/register">
+<div class="row justify-content-evenly">
+<?php
+if($this->session->flashdata('message'))
+  {
+?>
+  <div><?php echo $this->session->flashdata('message');?></div>
+  <?php } ?>
+
+  <h2>Register Account</h2>
+    <div class="col-lg-6">
+    <h5 class="my-4">Personal Information:</h5> 
+            <form method="post" action="<?php echo base_url(); ?>wp_controller/register">
+            
             <div class="row">
 			<label class="label col-md-4 control label">First Name:</label>
 	    				<div class="col-lg-8 mb-3">
@@ -22,7 +29,7 @@
 						</div>
             </div>
 
-			<div class="row">
+            <div class="row">
 			<label class="label col-md-4 control label">Last Name:</label>
 			     	  	<div class="col-lg-8 mb-3">
 					  	<input type="text" name="lname" class="form-control" placeholder="Last Name" aria-label="Last name"> 
@@ -30,7 +37,7 @@
     					</div>
             </div>
 
-			<div class="row">
+            <div class="row">
               <label class="label col-md-4 control label">Extension:</label>
               <div class="col-lg-8 mb-3">
                 <select name="extension" class="form-select form-select-md" aria-label=".form-select-md example">
@@ -98,7 +105,7 @@
                   <option value="31">31</option>
                 </select>
               </div>
-              
+            
               <div class="col-lg-3 col-sm-3 mb-3">
                 <select name="year" class="form-select form-select-md" aria-label=".form-select-md example">
                   <option selected>Year</option> <!-- 1990 - 2022 -->
@@ -182,7 +189,7 @@
 						</div>
             </div>
 
-			<div class="row">
+            <div class="row">
 					<label class="label col-md-4 control label">Sex: </label>
 						<div class="col-lg-8 mb-3">
 	       					<?php 
@@ -207,59 +214,55 @@
             			</div>
 					</div>
           </div>  
+
+          <div class="col-lg-6 ">
+            <h5 class="my-4">Account Information:</h5>  
+
+            <div class="row">
+              <label class="label col-md-4 control label">Email Address:</label>
+                <div class="col-lg-8 mb-3">
+                    <input type="text" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address"/>
+                    <span><?php echo form_error("email");?> </span>
+                </div>    
+            </div>
+
+            <div class="row">
+              <label class="label col-md-4 control label">Password:</label>
+                <div class="col-lg-8 mb-3">
+                    <input type="password" name="pass" class="form-control" placeholder="Password" aria-label="Password"/>
+                    <span><?php echo form_error("pass"); ?> </span>
+                  </div>
+            </div>
+
+            <div class="row">
+              <label class="label col-md-4 control label">Confirm Password:</label>
+                <div class="col-lg-8 mb-3">
+                    <input type="password" name="conf_pass" class="form-control" placeholder="Password" aria-label="Password"/>
+                    <span><?php echo form_error("conf_pass"); ?> </span>
+                  </div>
+            </div>
+
+
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6Lf-zP4dAAAAABFaLEWpdsWvi7X7M_pLgjDt3u8v"></div>
+                </div>
+                
+
+
+                <?php  
+    if(!empty($error_arr)){ 
+        echo '<p class="status-msg error">'.$error_arr.'</p>'; 
+    } 
+?>
+    
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <input type="submit" name="Register" class="btn-lg btn-primary m-4" value="Register" />
+                </div>
+
+            </form>
        
-        
-        
-        <div class="col-lg-6 ">
-          
-          <h5 class="my-4">Account Information:</h5>
-        
-            <div class="row">
-			<label class="label col-md-4 control label">Username:</label>
-    					<div class="col-lg-8 mb-3">
-    					<input type="text" name="user" class="form-control" placeholder="Username" aria-label="Username">
-						<span><?php echo form_error("user");?> </span>
-						</div>
-            </div>
+    </div>        
+</div>
 
-            <div class="row">
-			<label class="label col-md-4 control label">Email Address:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="text" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
-						<span><?php echo form_error("email");?> </span>
-						</div>
-            </div>
 
-            <div class="row">
-			<label class="label col-md-4 control label">Password:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="password" name="pass" class="form-control" placeholder="Password" aria-label="Password">
-						<span><?php echo form_error("pass"); ?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Confirm Password:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="password" name="conf_pass" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password">
-						<span><?php echo form_error("conf_pass"); ?> </span>
-						</div>
-            </div>
-
-          </div>  
-        </div>  
-
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-		<input class="btn-lg btn-primary m-4" type="submit" value="Register" name="btnadd">    
-	</div>
-
-  
-  <?php  
-        if(!empty($error_arr)){ 
-            echo '<p class="status-msg error">'.$error_arr.'</p>'; 
-        } 
-    ?>
-        
-      </div>
-
-	</form>

@@ -1,6 +1,6 @@
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark  banner">
+<nav class="navbar navbar-expand-md navbar-dark banner">
         <div class="container-fluid">
           
           <a class="navbar-brand" href="<?php echo base_url('wp_controller/home'); ?>" style="padding-left: 4rem;" >
@@ -14,13 +14,16 @@
               <a class="nav-item nav-link active" href="<?php echo base_url('wp_controller/home'); ?>">Home</a>
               <a class="nav-item nav-link active" href="#">About-Us</a>
               <a class="nav-item nav-link active" href="#">Help</a>
-              <a class="nav-item nav-link active" href="<?php echo base_url('wp_controller/register'); ?>">Sign-up</a></button>
-              <a class="nav-item nav-link active" href="<?php echo base_url('wp_controller/login'); ?>">Log-in</a></button>
-              
+              <a class="nav-item nav-link active" href="<?php echo base_url('wp_controller/register'); ?>">Register</a>
+              <a class="nav-item nav-link active" href="<?php echo base_url('wp_controller/login'); ?>">Log-in</a>
+            
               
             </div>
           </div>
         </div>
       </nav>
+
+
+
 
 

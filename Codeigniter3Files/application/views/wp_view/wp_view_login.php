@@ -2,6 +2,13 @@
 
 <form method="post" action="<?php echo base_url()?>wp_controller/login">
 
+<?php
+if($this->session->flashdata('success_message'))
+  {
+?>
+  <div><?php echo $this->session->flashdata('success_message');?></div>
+  <?php } ?>
+
 <div class="container my-5 bg-light border border-secondary rounded-3">
         <h5 class="text-center pt-3">User Authentication</h5>
         <hr class="style1">
@@ -23,8 +30,9 @@
         <div class="col-md-12 text-center">
             <button type="submit" name="insert" value="Log in" class="btn btn-outline-secondary w-75">Login</button>
         </div>
-        
-        <p class="text-center">Forget your password?</p>
+<!--         
+        <p class="text-center">Forget your password?</p> -->
+        <a href="<?php echo base_url('wp_controller/forget_pass'); ?> ">Forgot your password?</a>
 
         <?php  
         if(!empty($success_msg)){ 
@@ -33,7 +41,6 @@
             echo '<p class="status-msg error">'.$error_msg.'</p>'; 
         } 
     ?>
-
 		<?php
 	if($this->session->flashdata('error')) {	?>
 	<p> <?=$this->session->flashdata('error')?></p>

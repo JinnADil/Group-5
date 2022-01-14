@@ -14,7 +14,7 @@
 	</div>
 
 	<div>
-		<label>Username:</label>
+		<label>Email Address:</label>
 		<input type="text" name="email" placeholder="Enter Email Address"/>
 		<span><?php echo form_error("email");?> </span>
 	</div>
