@@ -1,0 +1,29 @@
+body{
+    background: #E1888C;
+    background: -webkit-linear-gradient(top,#ffffff,#C7232B);
+    background-attachment: fixed;
+}
+
+.banner{
+    background: #830001;
+    background: -webkit-radial-gradient(center,#ffffff,#830001);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 150px;
+}
+
+.navbar{
+    font-family: 'Poppins', sans-serif;
+}
+.nav-item{
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease 0s;
+    margin: 0 2px;
+    border-radius: 5px;
+}
+
+.navbar-nav a:hover{
+    background-color: rgb(255, 153, 0);
+    border-radius: 5px;
+}
