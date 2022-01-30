@@ -176,30 +176,6 @@
 						</div>
             </div>
 
-			<div class="row">
-					<label class="label col-md-4 control label">Sex: </label>
-						<div class="col-lg-8 mb-3">
-	       					<?php 
-            					if(!empty($user['sex']) && $user['sex'] == 'Female'){ 
-                					$fcheck = 'checked="checked"'; 
-                					$mcheck = ''; 
-            					}else{ 
-                					$mcheck = 'checked="checked"'; 
-                					$fcheck = ''; 
-            					} 
-            				?>
-            				<div>
-                    			<label class="label col-md-4 control label">
-                        			<input type="radio" name="sex" value="Male" <?php echo $mcheck; ?>>
-										Male
-                    			</label>
-                    			<label class="label col-md-4 control label">
-                        			<input type="radio" name="sex" value="Female" <?php echo $fcheck; ?>>
-                        				Female
-                    			</label>
-                			</div>
-            			</div>
-					</div>
           </div>  
        
         

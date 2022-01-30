@@ -1,13 +1,10 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/css/login.css')?>">
+
 
 <form method="post" action="<?php echo base_url()?>wp_controller/login">
 
-<?php
-if($this->session->flashdata('success_message'))
-  {
-?>
-  <div><?php echo $this->session->flashdata('success_message');?></div>
-  <?php } ?>
+<?php if($success = $this->session->flashdata('success_arr')){ ?>
+  <p style="color: green;"><strong>Success!</strong> <?php echo  $success; ?><p>
+<?php } ?>
 
 <div class="container my-5 bg-light border border-secondary rounded-3">
         <h5 class="text-center pt-3">User Authentication</h5>

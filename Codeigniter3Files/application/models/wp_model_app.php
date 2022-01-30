@@ -19,15 +19,6 @@ class wp_model_app extends CI_Model {
         }
     }
 
-    function insert_docu($userData){
-        if($this->db->insert('docu_info',$userData)){
-            return TRUE;
-        }
-        else{
-            return FALSE;
-        }
-    }
-
     function getRows($params = array()){ 
         $this->db->select('*'); 
         $this->db->from($this->table); 
@@ -69,9 +60,28 @@ class wp_model_app extends CI_Model {
         $this->db->where("id",$id);
         $this->db->update("user_info", $data);
     }
+
+    function send_request($data, $id)
+    {
+        $this->db->where("id",$id);
+        $this->db->insert('history_info',$data);
+    }   
+    function update_request($data, $id)
+    {
+        $this->db->where("id",$id);
+        $this->db->update('history_info',$data);
+    } 
+    
+    function history($id){ 
+        $this->db->where("user_info_id",$id);
+        $query = $this->db->get("history_info");
+        //Select * FROM user_info where id = '$id'     
+        return $query->result();
+        // Return fetched data
+    } 
+
     function display_data()
     {
-        
         $query = $this->db->get("user_info");
         //select * from user_info
         return $query;

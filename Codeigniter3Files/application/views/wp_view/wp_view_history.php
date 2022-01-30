@@ -2,8 +2,6 @@
 <body>
 <h2>Account</h2>
 
-<!-- <h2>Welcome <?php echo $user['sender_user']; ?>!</h2> -->
-
 <a href="<?php echo base_url('wp_controller/dashboard'); ?>">Back</a>
 
 <div>
@@ -16,20 +14,29 @@
 
         <tr>
         <!-- <p><b>Id: </b><?php echo $user['id']?></p> -->
-        <td><h5><?php echo $user['sender_user']; ?><h5></td>
-        <td><h5><?php echo $user['sender_docu']; ?><h5></td>
-        <td><h5><?php echo $user['sender_docu_status']; ?><h5></td>
-        <form method="post" action="<?php echo base_url()?>wp_controller/register">
+        <?php
+  $i=1;
+  foreach($data as $row)
+  {
+  echo "<tr>";
+  echo "<td>".$row->sender_email."</td>";
+  echo "<td>".$row->sender_docu."</td>";
+  echo "<td>".$row->sender_docu_status."</td>";
+  ?>
+     <form method="post" action="<?php echo base_url()?>wp_controller/register">
         <div>
-	<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
+	<input type="hidden" name="hidden_id" value="<?php echo $row->id; ?>"/>
 	</div>
-        <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive Request" name="receive"> </td>
-        <td><input class="btn-lg btn-primary m-4" type="submit" value="Cancel Request" name="cancel"> </td>
+        <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive" name="receive"> </td>
+        <td><input class="btn-lg btn-primary m-4" type="submit" value="Cancel" name="cancel"> </td>
+        <td><input class="btn-lg btn-primary m-4" type="submit" value="Delete" name="delete"> </td>
         </form>
+  <?php
+  echo "</tr>";
+  $i++;
+  }
+   ?>
+
         </tr>
         </table>
 </div>
-
-
-<!-- <a href="<?php echo base_url('wp_controller/update'); ?>">Update Information</a>
-<a href="<?php echo base_url('wp_controller/delete'); ?>">Delete Account</a> -->

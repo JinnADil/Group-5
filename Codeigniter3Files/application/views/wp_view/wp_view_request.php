@@ -1,4 +1,5 @@
-
+<section class="highlight-clean"
+        style="background: linear-gradient(180deg, black, white 0%, rgb(145,47,47) 100%);padding-top: 40px;height: 100%;">
 <div class="container my-5 bg-light">
       <div class="row justify-content-evenly">
 	  <h2>Request Document</h2>
@@ -158,72 +159,28 @@
             <div class="row">
 			<label class="label col-md-4 control label">Mobile Number:</label>
     					<div class="col-lg-8 mb-3">
-    					<input type="text" name="phnum" value="<?php echo $user['sender_phnum']?>" class="form-control" placeholder="Ex: 2222-222-2222" aria-label="Mobile Number" required>
+    					<input type="text" name="phnum" value="<?php echo $user['sender_phnum']?>" class="form-control" placeholder="Ex: 09xx-xxx-xxxx" aria-label="Mobile Number" required>
 						<span><?php echo form_error("phnum");?> </span>
 						</div>
             </div>
 
-            <div class="row">
-			<label class="label col-md-4 control label">Receiving Email Address:</label>
-    					<div class="col-lg-8 mb-3">
-    					<input type="text" name="rec_email" value="<?php echo $user['sender_docu_email']?>"  class="form-control" placeholder="Email Address" aria-label="Recieving Email Address" required>
-						<span><?php echo form_error("rec_email");?> </span>
-						</div>
-            </div>
-
-            <div class="row">
 			<label class="label col-md-4 control label">Address:</label>
         				<div class="col-lg-8 mb-3">
-            <label>House Lot Block no.</label>
-    					          <input type="text" name="houselt" value="<?php echo $user['sender_houselt']?>" class="form-control" placeholder="Block * Lot *" aria-label="houseLot">
-						            <span><?php echo form_error("houselt");?> </span>
-            <label>Street</label>
-                        <input type="text" name="strt" value="<?php echo $user['sender_strt']?>" class="form-control" placeholder="Street" aria-label="street">
-						            <span><?php echo form_error("strt");?> </span>
-            <label>Subdivision</label>
-                        <input type="text" name="subd" value="<?php echo $user['sender_subd']?>" class="form-control" placeholder="Subdivision" aria-label="subdivision">
-						            <span><?php echo form_error("subd");?> </span>
-            <label>Baranggay</label>
-                        <input type="text" name="brgy" value="<?php echo $user['sender_brgy']?>" class="form-control" placeholder="Baranggay" aria-label="baranggay">
-						            <span><?php echo form_error("brgy");?> </span>
-            <label>City/Municipality</label>
-                        <input type="text" name="municity" value="<?php echo $user['sender_municity']?>" class="form-control" placeholder="City/Municipality" aria-label="city">
-						            <span><?php echo form_error("municity");?> </span>
-            <label>Province/State</label>
-                        <input type="text" name="provi" value="<?php echo $user['sender_provi']?>" class="form-control" placeholder="Province" aria-label="province">
-						            <span><?php echo form_error("provi");?> </span>
-            <label>Zipcode</label>
-                        <input type="text" name="zip" value="<?php echo $user['sender_zip']?>" class="form-control" placeholder="Zipcode" aria-label="zipcode">
-						<span><?php echo form_error("zip");?> </span>
-						</div>
+            <label>House Address</label>
+    					          <input type="text" name="addrs" value="<?php echo $user['sender_addrs']?>" class="form-control" placeholder="House Address" aria-label="houseLot">
+						            <span><?php echo form_error("addrs");?> </span>
             </div>
 
             <div class="row">
-					<label class="label col-md-4 control label">Sex: </label>
-						<div class="col-lg-8 mb-3">
-	       					<?php 
-            					if(!empty($user['sex']) && $user['sex'] == 'Female'){ 
-                					$fcheck = 'checked="checked"'; 
-                					$mcheck = ''; 
-            					}else{ 
-                					$mcheck = 'checked="checked"'; 
-                					$fcheck = ''; 
-            					} 
-            				?>
-            				<div>
-                    			<label class="label col-md-4 control label">
-                        			<input type="radio" name="sex" value="Male" <?php echo $mcheck; ?>>
-										Male
-                    			</label>
-                    			<label class="label col-md-4 control label">
-                        			<input type="radio" name="sex" value="Female" <?php echo $fcheck; ?>>
-                        				Female
-                    			</label>
-                			</div>
-            			</div>
-					</div>
+              <label class="label col-md-4 control label">Email Address:</label>
+                <div class="col-lg-8 mb-3">
+                    <input type="text" name="email" value="<?php echo $user['sender_email']?>" class="form-control" placeholder="Email Address" aria-label="Email Address"/>
+                    <span><?php echo form_error("email");?> </span>
+                </div>    
+            </div>
 
-          <input type="hidden" name="rec_email" value="<?php echo $user['sender_docu_email']?>"  class="form-control" placeholder="Email Address" aria-label="Recieving Email Address"/>
+
+          <input type="hidden" name="id" value="<?php echo $user['id']?>"  class="form-control" placeholder="Email Address" aria-label="Recieving Email Address"/>
           <div>
 						<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
 					</div>
@@ -243,6 +200,10 @@
         } 
     ?>
         
-      </div>
-      </div>
+
 	</form>
+  </div>
+      </div>
+      </section>
+
+ 
