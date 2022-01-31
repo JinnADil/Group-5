@@ -4,15 +4,13 @@ body{
     background-attachment: fixed;
 }
 
-.banner{
+.banner {
     background: #830001;
     background: -webkit-radial-gradient(center,#ffffff,#830001);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-bottom: 150px;
 }
-
 .navbar{
     font-family: 'Poppins', sans-serif;
 }
