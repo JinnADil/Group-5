@@ -43,7 +43,7 @@
   { ?>
 
   <tr>
-  <td height="107" align="center"> <?php echo $row->sender_email ?></td>
+  <td height="107" align="center"> <?php echo $row->sender_req_email ?></td>
   <td align="center"> <?php echo $row->sender_docu ?></td>
   <td align="center"> <?php echo $row->sender_docu_status ?></td>
 
