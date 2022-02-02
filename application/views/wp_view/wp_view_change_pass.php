@@ -1,4 +1,4 @@
-</head>
+
 <body>
 <div class="container my-5 bg-light">
       <div class="row justify-content-evenly">
