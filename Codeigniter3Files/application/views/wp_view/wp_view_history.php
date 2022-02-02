@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>History</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend+Deca&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Clean.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="background: rgb(129,27,27);padding: 22px 0px;">
+        <div class="container"><a class="navbar-brand" href="#" style="font-family: 'Lexend Deca', sans-serif;color: rgb(255,255,255);margin: 0px 5%;font-size: 40px;">DTS</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="font-family: 'Lexend Deca', sans-serif;color: rgb(255,255,255);font-size: 18px;text-align: center;">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(255,255,255);text-align: center;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(255,255,255);text-align: center;">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: rgb(255,255,255);text-align: center;">Help</a></li>
+                    <li class="nav-item"></li>
+                </ul><a href="#" style="color: rgb(255,255,255);">Welcome, Darkdrift!</a><span class="navbar-text actions" style="padding: 6px 0px;margin: 0px 10px;"><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(221,221,221);color: rgb(200,73,73);text-align: center;">Dashboard</a></span><a href="<?php echo base_url('wp_controller/dashboard'); ?>"style="color: var(--bs-body-color);font-weight: bold;text-align: center;"><span class="col offset-xxl-0" style="background: repeating-linear-gradient(rgb(255,84,84) 0%, white 100%), var(--bs-red);"><strong></strong></span></a></div>
+        </div>
+    </nav>
+    <section class="highlight-clean" style="background: linear-gradient(180deg, black, rgb(247, 195, 195) 0%, rgb(145,47,47) 100%);">
+        <div class="align-content-end" id="box" style="background: linear-gradient(black 0%, var(--bs-red) 0%, white 100%), var(--bs-red);">
+            <div class="row">
+                <div class="col offset-xxl-0" id="col2" style="background: repeating-linear-gradient(rgb(255,84,84) 0%, white 100%), var(--bs-red);">
+                    <body>
+                        <h1 style="color: var(--bs-body-color);font-weight: bold;text-align: center;">HISTORY</h1><strong></strong>
+                        <div>
+                          <table width="1475" height="679">
+                            <tr>
+                                    <th width="289" height="45"><strong>
+                                      <center>
+                                      RECIPIENT
+                                      </center>
+                                    </strong></th>
+                                    <th width="305"><center>
+                                    DOCUMENT REQUESTED
+                                    </center>
+                              <th width="199"><center>
+                              STATUS                                    
+                              </center>
+                              <th width="576"><h4>
+                                <center>
+                                </center>
+                              </h4>
+                            </tr>
+                        
+                                <tr>
+                                  <td height="107" align="center">halidom@gmail.com</td>
+                                  <td align="center">GOOD MORAL</td>
+                                  <td align="center">CANCELLED</td>
+                                  <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive" name="receive3">
+                                  <input class="btn-lg btn-primary m-4" type="submit" value="Delete" name="delete3">
+                                  <input class="btn-lg btn-primary m-4" type="submit" value="Cancel" name="cancel3"></td>
+                                </tr>
+                                <tr>
+                                  <td height="198" align="center">halidom@gmail.com</td>
+                                  <td align="center">GOOD MORAL</td>
+                                  <td align="center">RECEIVED</td>
+                                  <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive" name="receive">
+                                  <input class="btn-lg btn-primary m-4" type="submit" value="Delete" name="delete">
+                                  <input class="btn-lg btn-primary m-4" type="submit" value="Cancel" name="cancel"></td>
+                                </tr>
+                                <tr>
+
+                             <form method="post" action="<?php echo base_url()?>wp_controller/register">
+                                <div>
+                            <input type="hidden" name="hidden_id" value="<?php echo $row->id; ?>"/>
+                            </div>
+                                <td height="203" align="center">halidom@gmail.com</td>
+                                <td align="center">FORM 137</td>
+                                <td align="center">CANCELLED</td>
+                                <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive" name="receive2">
+                                <input class="btn-lg btn-primary m-4" type="submit" value="Delete" name="delete2">
+                                <input class="btn-lg btn-primary m-4" type="submit" value="Cancel" name="cancel2"></td>
+                                </form>
+                              </tr>
+                             </table>
+                  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-clean" style="font-family: 'Lexend Deca', sans-serif;background: rgb(129,27,27);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Document Transfer</a></li>
+                        <li><a href="#">Cloud Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3 style="color: rgb(255,255,255);">About Us</h3>
+                    <ul>
+                        <li style="color: rgb(255,255,255);"><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Legacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3>Careers</h3>
+                    <ul>
+                        <li><a href="#">Job openings</a></li>
+                        <li><a href="#">Employee success</a></li>
+                        <li><a href="#">Benefits</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 item social" style="color: rgb(255,255,255);"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                    <p class="copyright">Team 5 © 2021</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
