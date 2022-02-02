@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class wp_controller extends CI_Controller {
 
-	function __construct() { 
+	public function __construct() { 
         parent::__construct(); 
          
         // Load form validation ibrary & user model 
@@ -18,7 +18,7 @@ class wp_controller extends CI_Controller {
         $this->isUserLoggedIn = $this->session->userdata('isUserLoggedIn'); 
     } 
      
-	function index(){
+	public function index(){
 		if($this->isUserLoggedIn){ 
             redirect('wp_controller/dashboard'); 
         }else{ 
@@ -26,13 +26,13 @@ class wp_controller extends CI_Controller {
         }
 	}
 
-	function register(){	
+	public function register(){	
 		$data = $userData = array();
 		if($_SERVER['REQUEST_METHOD']=='POST') 				
 		{
 			$this->load->library('form_validation');		
 			$this->form_validation->set_rules('user','Username','required');		
-			$this->form_validation->set_rules('pass','Password', 'required');//'min_length[7]',
+			$this->form_validation->set_rules('pass','Password','min_length[7]', 'required');//'min_length[7]',
 			$this->form_validation->set_rules('conf_pass', 'Confirm Password', 'required|matches[pass]');
 			$this->form_validation->set_rules('fname','First Name','required');
 			$this->form_validation->set_rules('mname','Middle Name','required');
@@ -74,7 +74,7 @@ class wp_controller extends CI_Controller {
 
 			curl_setopt($startProcess, CURLOPT_POSTFIELDS, http_build_query($check));
 
-			curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($startProcess, CURLOPT_SSL_VERIFYPEER, true);
 
 			curl_setopt($startProcess, CURLOPT_RETURNTRANSFER, true);
 
@@ -162,33 +162,16 @@ class wp_controller extends CI_Controller {
 			$this->wp_model_app->update_data($data, $this->input->post("hidden_id"));	
 			redirect(base_url()."wp_controller/account");
 		}
-		if($this->input->post("update_docu"))
-		{	
-			$userData = array(													
-				'sender_fname' => $firstname,
-				'sender_mname' => $middlename,
-				'sender_lname' => $surname,
-				'sender_extension' => $extension,
-				'sender_addrs' => $address,
-				'sender_phnum' => $phonenumber,
-				'sender_year' => $year,
-				'sender_month' => $month,
-				'sender_day' => $day,						
-			);
-			$this->db->set($userData);			
-			$this->wp_model_app->update_data($data, $this->input->post("hidden_id"));	
-			redirect(base_url()."wp_controller/request");
-		} 
 
 		if($this->input->post("request_docu"))
 		{	
-			$id = $this->input->post('id');
+			$uid = $this->input->post('uid');
 			$this->load->model("wp_model_app");
 			$userData = array(				
 				"sender_docu" => $document,	
 				"sender_docu_status" => 'Pending',
-				'sender_email'	=>	$emailaddress,
-				"user_info_id" => $id,													
+				'sender_req_email'	=>	$emailaddress,
+				"user_info_id" => $uid,													
 			);
 				$this->db->set($userData);			
 				$this->wp_model_app->send_request($data, $this->input->post("hidden_id"));
@@ -208,6 +191,8 @@ class wp_controller extends CI_Controller {
 				
 				$emailContent .= "<h3>The recipient is requesting for the following document/s, here's it's personal information </h3><br>";
 
+				$emailContent .= "<h4>This Email has been requested from DTS, Please don't delete this email.</h4><br>";
+
 				$emailContent .= "<h4>Document: </h4>";
 				$emailContent .= $this->input->post('docu');
 				$emailContent .= "<br>";
@@ -221,13 +206,9 @@ class wp_controller extends CI_Controller {
 				$emailContent .= $this->input->post('extension');
 
 				$emailContent .= "<h4>Recipient's Phone number </h4>";
-				$emailContent .= "<br> ";
 				$emailContent .= $this->input->post('phnum');
-				$emailContent .= "<br> ";
 
-				$emailContent .= "<br> ";
 				$emailContent .= "<h4>Recipient's Email Address </h4>";
-				$emailContent .= "<br> ";
 				$emailContent .= $this->input->post('email');
 				$emailContent .= "<br> ";
 
@@ -355,7 +336,7 @@ class wp_controller extends CI_Controller {
 
 	}
 
-	function home(){
+	public function home(){
 		$data = array();
 		$this->load->view('wp_element/wp_header', $data); 
 		$this->load->view('wp_element/wp_nav', $data); 
@@ -363,7 +344,7 @@ class wp_controller extends CI_Controller {
 		$this->load->view('wp_element/wp_footer');
 	}
 
-	function login()
+	public function login()
 	{
 		$data = array();
 
@@ -422,7 +403,7 @@ class wp_controller extends CI_Controller {
 		$this->load->view('wp_element/wp_footer'); 		
 	}
 
-	function forget_pass(){
+	public function forget_pass(){
 		$data = array();
 		$this->load->view('wp_element/wp_header', $data); 
 		$this->load->view('wp_element/wp_nav', $data); 
@@ -430,7 +411,7 @@ class wp_controller extends CI_Controller {
 		$this->load->view('wp_element/wp_footer');
 	}
 
-	function forgetpass()
+	public function forgetpass()
 	{
 		$data = array();
 
@@ -517,7 +498,7 @@ class wp_controller extends CI_Controller {
 		$this->load->view('wp_element/wp_footer'); 		
 	}
 
-	function change_pass(){
+	public function change_pass(){
 		$data = array(); 
         if($this->isUserLoggedIn){ 
             $con = array( 
@@ -533,7 +514,7 @@ class wp_controller extends CI_Controller {
         }
 	}
 
-	function dashboard(){
+	public function dashboard(){
 		$data = array(); 
         if($this->isUserLoggedIn){ 
             $con = array( 
@@ -543,13 +524,14 @@ class wp_controller extends CI_Controller {
              
             // Pass the user data and load view 
 		$this->load->view('wp_element/wp_header', $data); 
+		$this->load->view('wp_element/wp_navlogin', $data); 
 		$this->load->view('wp_view/wp_view_dashboard', $data); 
 		$this->load->view('wp_element/wp_footer'); 
         }  
 	}
 
 
-	function account(){
+	public function account(){
 		$data = array(); 
         if($this->isUserLoggedIn){ 
             $con = array( 
@@ -559,6 +541,7 @@ class wp_controller extends CI_Controller {
              
             // Pass the user data and load view 
 		$this->load->view('wp_element/wp_header', $data); 
+		$this->load->view('wp_element/wp_navlogin', $data); 
 		$this->load->view('wp_view/wp_view_account', $data); 
 		$this->load->view('wp_element/wp_footer');  
         } 
@@ -574,6 +557,7 @@ class wp_controller extends CI_Controller {
             $data['user'] = $this->wp_model_app->getRows($con); 
 			
 			$this->load->view('wp_element/wp_header', $data); 
+			$this->load->view('wp_element/wp_navlogin', $data); 
 			$this->load->view('wp_view/wp_view_acc_update', $data); 
 			$this->load->view('wp_element/wp_footer');  
         }
@@ -589,40 +573,11 @@ class wp_controller extends CI_Controller {
             $data['user'] = $this->wp_model_app->getRows($con); 
 			
 			$this->load->view('wp_element/wp_header', $data); 
+			$this->load->view('wp_element/wp_navlogin', $data); 
 			$this->load->view('wp_view/wp_view_pers_update', $data); 
 			$this->load->view('wp_element/wp_footer');  
         }
 	}
-
-	public function sender_update(){
-		$data = array(); 
-        if($this->isUserLoggedIn){ 
-
-           $con = array( 
-                'id' => $this->session->userdata('userId') 
-            ); 
-            $data['user'] = $this->wp_model_app->getRows($con); 
-			
-			$this->load->view('wp_element/wp_header', $data); 
-			$this->load->view('wp_view/wp_view_sender_update', $data); 
-			$this->load->view('wp_element/wp_footer');  
-        }
-	}
-
-	// public function reqUpdate(){
-	// 	$data = array(); 
-    //     if($this->isUserLoggedIn){ 
-
-    //        $con = array( 
-    //             'id' => $this->session->userdata('userId') 
-    //         ); 
-    //         $data['user'] = $this->wp_model_app->getRows($con); 
-			
-	// 		$this->load->view('wp_element/wp_header', $data); 
-	// 		$this->load->view('wp_view/wp_view_req_update', $data); 
-	// 		$this->load->view('wp_element/wp_footer');  
-    //     }
-	// }
 
 	public function logout(){ 
         $this->session->unset_userdata('isUserLoggedIn'); 
@@ -641,6 +596,7 @@ class wp_controller extends CI_Controller {
             $data['user'] = $this->wp_model_app->getRows($con); 
 			 
 			$this->load->view('wp_element/wp_header', $data); 
+			$this->load->view('wp_element/wp_navlogin', $data); 
 			$this->load->view('wp_view/wp_view_delete', $data); 
 			$this->load->view('wp_element/wp_footer');
         }
@@ -720,40 +676,7 @@ class wp_controller extends CI_Controller {
         } 
     }
 
-	// function admin(){
-	// 	$data = array(); 
-    //     if($this->isUserLoggedIn){ 
-    //         $con = array( 
-    //             'id' => $this->session->userdata('userId') 
-    //         ); 
-    //         $data['user'] = $this->wp_model_app->getRows($con); 
-             
-    //         // Pass the user data and load view 
-	// 	$this->load->view('wp_element/wp_header', $data); 
-	// 	$this->load->view('wp_view/wp_view_admin', $data); 
-	// 	$this->load->view('wp_element/wp_footer'); 
-    //     }  
-	// }
-
-	// function admin_account(){
-	// 	$data = array(); 
-    //     if($this->isUserLoggedIn){ 
-    //         $con = array( 
-    //             'id' => $this->session->userdata('userId') 
-    //         ); 
-    //         $data['user'] = $this->wp_model_app->getRows($con); 
-
-	// 		$this->load->model("wp_model_app");
-	// 		$data["display_data"] = $this->wp_model_app->display_data();
-    //         // Pass the user data and load view
-
-	// 	$this->load->view('wp_element/wp_header', $data); 
-	// 	$this->load->view('wp_view/wp_view_ad_account', $data); 
-	// 	$this->load->view('wp_element/wp_footer');  
-    //     } 
-	// }
-
-	function request(){
+	public function request(){
 		$data = array(); 
         if($this->isUserLoggedIn){ 
             $con = array( 
@@ -763,37 +686,54 @@ class wp_controller extends CI_Controller {
              
             // Pass the user data and load view 
 		$this->load->view('wp_element/wp_header', $data); 
+		$this->load->view('wp_element/wp_navlogin', $data); 
 		$this->load->view('wp_view/wp_view_request', $data); 
 		$this->load->view('wp_element/wp_footer');
 		}
 
 	}
-	// function receive(){
-	// 	$data = array(); 
-    //     if($this->isUserLoggedIn){ 
-    //         $con = array( 
-    //             'id' => $this->session->userdata('userId') 
-    //         ); 
-    //         $data['user'] = $this->wp_model_app->getRows($con); 
-             
-    //         // Pass the user data and load view 
-	// 	$this->load->view('wp_element/wp_header', $data); 
-	// 	$this->load->view('wp_view/wp_view_receive', $data); 
-	// 	$this->load->view('wp_element/wp_footer');
-	// 	}
-	// }
 
-	function history(){
+	public function history(){
 
 		$id = $this->input->post('id');
             $result['data'] = $this->wp_model_app->history($id); 
              
+			$data = array(); 
+			if($this->isUserLoggedIn){ 
+				$con = array( 
+					'id' => $this->session->userdata('userId') 
+				); 
+				$data['user'] = $this->wp_model_app->getRows($con); 
+			}
             // Pass the user data and load view 
 		$this->load->view('wp_element/wp_header', $result); 
+		$this->load->view('wp_element/wp_navlogin', $data); 
 		$this->load->view('wp_view/wp_view_history', $result); 
 		$this->load->view('wp_element/wp_footer');
 			
 	}
 
+	public function about(){
+		
+			$this->load->view('wp_element/wp_header'); 
+			$this->load->view('wp_element/wp_nav'); 
+			$this->load->view('wp_view/wp_view_about'); 
+			$this->load->view('wp_element/wp_footer');
+        
+	}
+	public function about1(){
+		$data = array(); 
+        if($this->isUserLoggedIn){ 
+            $con = array( 
+                'id' => $this->session->userdata('userId') 
+            ); 
+            $data['user'] = $this->wp_model_app->getRows($con); 
+             
+            // Pass the user data and load view 
+		$this->load->view('wp_element/wp_header', $data); 
+		$this->load->view('wp_element/wp_navlogin', $data); 
+		$this->load->view('wp_view/wp_view_about', $data); 
+		$this->load->view('wp_element/wp_footer');
+		}}
 
 }

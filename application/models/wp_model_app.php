@@ -10,7 +10,7 @@ class wp_model_app extends CI_Model {
         parent::__construct();
     }
 
-    function insert($userData){
+    public function insert($userData){
         if($this->db->insert('user_info',$userData)){
             return TRUE;
         }
@@ -19,7 +19,7 @@ class wp_model_app extends CI_Model {
         }
     }
 
-    function getRows($params = array()){ 
+    public function getRows($params = array()){ 
         $this->db->select('*'); 
         $this->db->from($this->table); 
          
@@ -55,24 +55,24 @@ class wp_model_app extends CI_Model {
         return $result; 
     } 
 
-    function update_data($data, $id)
+    public function update_data($data, $id)
     {
         $this->db->where("id",$id);
         $this->db->update("user_info", $data);
     }
 
-    function send_request($data, $id)
+    public function send_request($data, $id)
     {
         $this->db->where("id",$id);
         $this->db->insert('history_info',$data);
     }   
-    function update_request($data, $id)
+    public function update_request($data, $id)
     {
         $this->db->where("id",$id);
         $this->db->update('history_info',$data);
     } 
     
-    function history($id){ 
+    public function history($id){ 
         $this->db->where("user_info_id",$id);
         $query = $this->db->get("history_info");
         //Select * FROM user_info where id = '$id'     
@@ -80,7 +80,7 @@ class wp_model_app extends CI_Model {
         // Return fetched data
     } 
 
-    function display_data()
+    public function display_data()
     {
         $query = $this->db->get("user_info");
         //select * from user_info

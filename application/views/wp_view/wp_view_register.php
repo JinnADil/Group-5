@@ -6,6 +6,7 @@ if($this->session->flashdata('message'))
   <div><?php echo $this->session->flashdata('message');?></div>
   <?php } ?>
 
+  <body>
   <section class="highlight-clean"
         style="background: linear-gradient(180deg, black, white 0%, rgb(145,47,47) 100%);padding-top: 40px;height: 100%;">
         <div class="container my-4 bg-light">
@@ -72,7 +73,6 @@ if($this->session->flashdata('message'))
             <div class="row">
 			<label class="label col-md-4 control label">Address:</label>
         				<div class="col-lg-8 mb-3">
-            <label>House Lot Block no.</label>
     					          <input type="text" name="addrs" class="form-control" placeholder="Home Address" aria-label="houseLot">
 						            <span><?php echo form_error("addrs");?> </span>
             </div>

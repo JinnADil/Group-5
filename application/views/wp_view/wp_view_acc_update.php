@@ -1,45 +1,55 @@
-</head>
-<body>
-<div class="container my-5 bg-light">
-      <div class="row justify-content-evenly">
-	  <h2>Update Account Information</h2>
-        <div class="col-lg-6">
-        <h5 class="my-4">Account Information:</h5> 
 
-	<form method="post" action="<?php echo base_url()?>wp_controller/register">
+
+
+	<link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/bootstrap/css/bootstrap.min.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/fonts/ionicons.min.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/Footer-Clean.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/Highlight-Clean.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/Navigation-Clean.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/Navigation-with-Button.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/Newsletter-Subscription-Form.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/UpdateAccount/assets/css/styles.css')?>">
+	<body>
+	<section class="highlight-clean" style="background: linear-gradient(180deg, black, white 0%, rgb(145,47,47) 100%);">
+        <div class="container text-center w-50" id="box">
+            <p class="mt-3" style="font-family: 'Lexend Deca', sans-serif;">Update Account Information</p>
             <div class="row">
-			<label class="label col-md-4 control label">Username:</label>
-    					<div class="col-lg-8 mb-3">
-    					<input type="text" name="user" value="<?php echo $user['sender_user']?>" class="form-control" placeholder="Username" aria-label="Username" required>
-						<span><?php echo form_error("user");?> </span>
-						</div>
+                <div class="col" id="col2">
+				<p class="pt-2" style="font-family: 'Lexend Deca', sans-serif;"></p>
+                    <form method="post" action="<?php echo base_url()?>wp_controller/register">
+                    <h2 class="visually-hidden">Delete Form</h2>
+
+					<div class="mb-3">
+                        <input name="user" class="form-control" type="text" placeholder="Username" style="border-right-style: inherit;font-family: 'Lexend Deca', sans-serif;" required/>
+                    </div>
+                    <?php echo form_error("user")?>
+
+                    <div class="mb-3">
+                        <input name="email" class="form-control" type="email" placeholder="Email" style="border-right-style: inherit;font-family: 'Lexend Deca', sans-serif;" required/>
+                    </div>
+                    <?php echo form_error("email")?> 
+                    
+                    <div class="mb-3">
+                    <input name="pass" class="form-control" type="password" placeholder="Password" style="font-family: 'Lexend Deca', sans-serif;" required/>
+                </div>
+                <?php echo form_error("pass")?>
+
+				<div>
+				<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
+				</div>
+
+                <div class="mb-3">
+                    <button value="Update" name="acc_update" class="btn btn-dark type=" type="submit" style="background: rgb(129,27,30);font-family: 'Lexend Deca', sans-serif;">Update</button>
+                </div>
+				<?php
+	if($this->session->flashdata('error')) {	?>
+	<p> <?=$this->session->flashdata('error')?></p>
+<?php }?>
+				</form>
+				<div class="col-lg-4 col-xl-4 offset-lg-6 offset-xl-7 text-end my-4" id="buttons">
+				<a href="<?php echo base_url('wp_controller/account'); ?>"><button class="btn btn-primary" >Back</button></a>
+				</div>
+                </div>
             </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Email Address:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="text" name="email" value="<?php echo $user['sender_email']?>" class="form-control" placeholder="Email Address" aria-label="Email Address" required>
-						<span><?php echo form_error("email");?> </span>
-						</div>
-            </div>
-
-            <div class="row">
-			<label class="label col-md-4 control label">Password:</label>
-              			<div class="col-lg-8 mb-3">
-                		<input type="password" name="pass" value="<?php echo $user['sender_pass']?>" class="form-control" placeholder="Password" aria-label="Password">
-						<span><?php echo form_error("pass"); ?> </span>
-						</div>
-            </div>
-           
-		<div>
-						<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
-					</div>
-
-					<div class="d-grid gap-1 d-md-flex justify-content-md-end">
-						<button class="btn-lg btn-primary m-4" type="button"><a style="text-decoration: none; color: white;" href="<?php echo base_url('wp_controller/account'); ?>">Back</a></button>
-						<input class="btn-lg btn-primary m-4" type="submit" value="Update" name="acc_update">
-        			</div>
-        
-      </div>
-
-	</form>
+        </div>
+    </section>

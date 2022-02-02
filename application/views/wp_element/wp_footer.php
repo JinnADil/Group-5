@@ -38,7 +38,7 @@
             </div>
         </div>
     </footer><!-- End: Footer Clean -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
     <script src="/assets/js/script.min.js?h=a2cee23efd5962953aee193ace61225c"></script>
     <!-- <script src="signup.js"></script> -->
     <script src="<?php echo base_url('assets/js/signup.js')?>"></script>

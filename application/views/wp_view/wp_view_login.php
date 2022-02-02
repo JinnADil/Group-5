@@ -1,47 +1,44 @@
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend+Deca&amp;display=swap">
+        <link rel="stylesheet" href="<?php echo base_url('assets/Login-Screen/assets/fonts/ionicons.min.css')?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/Login-Screen/assets/css/styles.min.css')?>">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> 
+    
+  <body>
+    <section class="highlight-clean" style="background: linear-gradient(180deg, black, white 0%, rgb(145,47,47) 100%);">
+            <section class="login-clean" style="background: rgba(241,247,252,0);border-right-style: groove;">
+                
+            <form method="post" action="<?php echo base_url()?>wp_controller/login">
+                    <h2 class="visually-hidden">Login Form</h2>
+                    <div class="mb-3">
+                        <input name="email" class="form-control" type="email" name="email" placeholder="Email" style="border-right-style: inherit;font-family: 'Lexend Deca', sans-serif;">
+                    </div>
+                    <?php echo form_error("email")?> 
+                    
+                    <div class="mb-3"
+                    ><input name="pass" class="form-control" type="password" name="password" placeholder="Password" style="font-family: 'Lexend Deca', sans-serif;">
+                </div>
+                <?php echo form_error("pass")?>
 
+                <div class="mb-3">
+                    <button name="insert" class="btn btn-primary d-block w-100" type="submit" style="background: rgb(129,27,27);font-family: 'Lexend Deca', sans-serif;">Log In</button>
+                </div>
 
-<form method="post" action="<?php echo base_url()?>wp_controller/login">
-
-<?php if($success = $this->session->flashdata('success_arr')){ ?>
-  <p style="color: green;"><strong>Success!</strong> <?php echo  $success; ?><p>
-<?php } ?>
-
-<div class="container my-5 bg-light border border-secondary rounded-3">
-        <h5 class="text-center pt-3">User Authentication</h5>
-        <hr class="style1">
-        <div class="input-group mb-3 ">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id=""><i class="fa fa-user py-1"></i></span>
-            </div>
-
-            <input type="text" class="form-control" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="#">   
-        </div>
-        <?php echo form_error("email")?> 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="#"><i class="fa fa-unlock-alt py-1"></i></span>
-            </div>
-            <input type="password" class="form-control" name="pass" placeholder="Password" aria-label="Password" aria-describedby="#">
-		</div>
-        <?php echo form_error("pass")?>
-        <div class="col-md-12 text-center">
-            <button type="submit" name="insert" value="Log in" class="btn btn-outline-secondary w-75">Login</button>
-        </div>
-<!--         
-        <p class="text-center">Forget your password?</p> -->
-        <a href="<?php echo base_url('wp_controller/forget_pass'); ?> ">Forgot your password?</a>
-
-        <?php  
+                <?php  
         if(!empty($success_msg)){ 
             echo '<p class="status-msg success">'.$success_msg.'</p>'; 
         }elseif(!empty($error_msg)){ 
             echo '<p class="status-msg error">'.$error_msg.'</p>'; 
         } 
     ?>
-		<?php
-	if($this->session->flashdata('error')) {	?>
-	<p> <?=$this->session->flashdata('error')?></p>
-<?php }?>
+                
+                <a class="forgot" href="<?php echo base_url('wp_controller/forget_pass'); ?> " style="font-family: 'Lexend Deca', sans-serif;">Forgot your password?</a>
+                <a class="forgot" href="<?php echo base_url('wp_controller/register'); ?>">Don't have an account? Sign up here!</a>
+              
+              
+              </form>
+            </section>
+        </section>
 
-      </div>
-	  </form>
+        <script src="<?php echo base_url('assets/Login-Screen/assets/bootstrap/js/bootstrap.min.js')?>"></script>
+        <script src="<?php echo base_url('assets/Login-Screen/assets/js/script.min.js')?>"></script>
