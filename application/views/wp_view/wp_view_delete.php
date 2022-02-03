@@ -29,11 +29,11 @@
                 <?php echo form_error("pass")?>
 
 				<div>
-				<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
+				<input type="hidden" name="hidden_id" value="<?php echo $user['user_id']; ?>"/>
 				</div>
 
                 <div class="mb-3">
-                    <button value="Delete" name="del" class="btn btn-dark type="button" type="submit" style="background: rgb(129,27,30);font-family: 'Lexend Deca', sans-serif;">Delete</button>
+                    <button value="Delete" name="del" class="btn btn-dark type= button" type="submit" style="background: rgb(129,27,30);font-family: 'Lexend Deca', sans-serif;">Delete</button>
                 </div>
 				<?php
 	if($this->session->flashdata('error')) {	?>

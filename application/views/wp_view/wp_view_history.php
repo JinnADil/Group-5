@@ -49,7 +49,7 @@
 
   <form method="post" action="<?php echo base_url()?>wp_controller/register">
         <div>
-	<input type="hidden" name="hidden_id" value="<?php echo $row->id; ?>"/>
+	<input type="hidden" name="hidden_id" value="<?php echo $row->user_id; ?>"/>
 	</div>
         <td><input class="btn-lg btn-primary m-4" type="submit" value="Receive" name="receive"> </td>
         <td><input class="btn-lg btn-primary m-4" type="submit" value="Cancel" name="cancel"> </td>

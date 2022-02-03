@@ -143,7 +143,7 @@
                       <input type="text" name="email" value="<?php echo $user['sender_email']?>" class="form-control" placeholder="Email" aria-label="houseLot">
                         <span><?php echo form_error("email");?> </span>
                 </div>
-                <input type="hidden" name="uid" value="<?php echo $user['id']?>"  class="form-control" placeholder="id" aria-label="id"/>
+                <input type="hidden" name="uid" value="<?php echo $user['user_id']?>"  class="form-control" placeholder="id" aria-label="id"/>
               <input type="hidden" name="id" value="" class="form-control" placeholder="Email Address" aria-label="Recieving Email Address">
               <div>
                             <input type="hidden" name="hidden_id" value="">
