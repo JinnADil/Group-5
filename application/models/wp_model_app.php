@@ -57,23 +57,23 @@ class wp_model_app extends CI_Model {
 
     public function update_data($data, $id)
     {
-        $this->db->where("id",$id);
+        $this->db->where("user_id",$id);
         $this->db->update("user_info", $data);
     }
 
     public function send_request($data, $id)
     {
-        $this->db->where("id",$id);
+        $this->db->where("user_id",$id);
         $this->db->insert('history_info',$data);
     }   
     public function update_request($data, $id)
     {
-        $this->db->where("id",$id);
+        $this->db->where("user_id",$id);
         $this->db->update('history_info',$data);
     } 
     
     public function history($id){ 
-        $this->db->where("user_info_id",$id);
+        $this->db->where("user_id",$id);
         $query = $this->db->get("history_info");
         //Select * FROM user_info where id = '$id'     
         return $query->result();

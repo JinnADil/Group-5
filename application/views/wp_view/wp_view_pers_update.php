@@ -94,7 +94,7 @@
                   <?php echo form_error("addrs")?>
 
 				<div>
-				<input type="hidden" name="hidden_id" value="<?php echo $user['id']; ?>"/>
+				<input type="hidden" name="hidden_id" value="<?php echo $user['user_id']; ?>"/>
 				</div>
 
                 <div class="mb-3">

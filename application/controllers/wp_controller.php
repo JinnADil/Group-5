@@ -171,7 +171,7 @@ class wp_controller extends CI_Controller {
 				"sender_docu" => $document,	
 				"sender_docu_status" => 'Pending',
 				'sender_req_email'	=>	$emailaddress,
-				"user_info_id" => $uid,													
+				"user_id" => $uid,													
 			);
 				$this->db->set($userData);			
 				$this->wp_model_app->send_request($data, $this->input->post("hidden_id"));
@@ -255,7 +255,7 @@ class wp_controller extends CI_Controller {
 			$hidden = $this->input->post("hidden_id");
 			$this->load->model("wp_model_app");
 			$userData = array(					
-				"user_info_id" => 'Deleted',														
+				"user_id" => 'Deleted',														
 			);
 				$this->db->set($userData);			
 				$this->wp_model_app->update_request($data, $hidden);

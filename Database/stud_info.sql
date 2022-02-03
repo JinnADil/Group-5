@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2022 at 12:19 PM
+-- Generation Time: Feb 03, 2022 at 01:27 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `history_info` (
-  `id` int(11) NOT NULL,
-  `user_info_id` varchar(200) NOT NULL,
+  `history_id` int(11) NOT NULL,
+  `user_id` varchar(200) NOT NULL,
   `sender_req_email` varchar(200) NOT NULL,
   `sender_docu` varchar(200) NOT NULL,
   `sender_docu_status` varchar(200) NOT NULL
@@ -42,7 +42,7 @@ CREATE TABLE `history_info` (
 --
 
 CREATE TABLE `user_info` (
-  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `sender_user` varchar(200) NOT NULL,
   `sender_pass` varchar(200) NOT NULL,
   `sender_email` varchar(200) NOT NULL,
@@ -50,10 +50,10 @@ CREATE TABLE `user_info` (
   `sender_status` varchar(200) NOT NULL,
   `sender_lname` varchar(200) NOT NULL,
   `sender_fname` varchar(200) NOT NULL,
-  `sender_mname` varchar(100) NOT NULL,
+  `sender_mname` varchar(200) NOT NULL,
   `sender_extension` varchar(200) NOT NULL,
-  `sender_phnum` varchar(200) NOT NULL,
   `sender_addrs` varchar(200) NOT NULL,
+  `sender_phnum` varchar(200) NOT NULL,
   `sender_month` varchar(200) NOT NULL,
   `sender_day` varchar(200) NOT NULL,
   `sender_year` varchar(200) NOT NULL
@@ -67,13 +67,13 @@ CREATE TABLE `user_info` (
 -- Indexes for table `history_info`
 --
 ALTER TABLE `history_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`history_id`);
 
 --
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -83,13 +83,13 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `history_info`
 --
 ALTER TABLE `history_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
