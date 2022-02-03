@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DTS_Homepage (1)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend+Deca&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <!-- Start: Navigation with Button -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button"
+        style="background: rgb(129,27,27);padding: 22px 0px;">
+        <div class="container"><a class="navbar-brand" href="#"
+                style="font-family: 'Lexend Deca', sans-serif;color: rgb(255,255,255);margin: 0px 5%;font-size: 40px;">DTS</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1"
+                style="font-family: 'Lexend Deca', sans-serif;color: rgb(255,255,255);font-size: 18px;text-align: center;">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#"
+                            style="color: rgb(255,255,255);text-align: center;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#"
+                            style="color: rgb(255,255,255);text-align: center;">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#"
+                            style="color: rgb(255,255,255);text-align: center;">Help</a></li>
+                    <li class="nav-item"></li>
+                </ul><span class="navbar-text actions" style="padding: 6px 0px;margin: 0px 10px;"> <a class="login"
+                        href="#" style="color: rgb(255,255,255);text-align: center;">Log In</a><a
+                        class="btn btn-light action-button" role="button" data-bss-hover-animate="pulse" href="#"
+                        style="background: rgb(221,221,221);color: rgb(200,73,73);text-align: center;">Sign
+                        Up</a></span>
+            </div>
+        </div>
+    </nav><!-- End: Navigation with Button -->
+    <!-- Start: Highlight Clean -->
+    <section class="highlight-clean"
+        style="background: linear-gradient(180deg, black, white 0%, rgb(145,47,47) 100%);padding-top: 40px;height: 100%;">
+        <div class="container my-4 bg-light">
+            <form>
+                <div class="row justify-content-evenly">
+                    <div class="col-lg-6" style="padding-top: 30px;">
+                        <h4 style="padding-bottom: 20px;">Personal Information:</h4>
+                        <div class="row">
+                            <p class="col-md-4">Last Name:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Last Name" aria-label="lastname" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">First Name:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="First Name" aria-label="firstname" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Middle Name:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Middle Name" aria-label="middlename" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Suffix:</p>
+                            <div class="col-lg-8 mb-3"><select class="form-select form-select-md"
+                                    aria-label=".form-select-md example">
+                                    <optgroup label="Suffix">
+                                        <option>None</option>
+                                        <option value="1">Jr.</option>
+                                        <option value="2">Sr.</option>
+                                        <option value="3">III</option>
+                                        <option value="4">IV</option>
+                                    </optgroup>
+                                </select></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-3">Birthdate:</p>
+                            <div class="col-lg-4 mb-3"><select class="form-select form-select-md"
+                                    aria-label=".form-select-md example" name= "month" id="month">
+                                    <optgroup label="Month">
+                                    </optgroup>
+                                </select></div>
+                            <div class="col-md-2 mb-3"><select class="form-select form-select-md"
+                                    aria-label=".form-select-md example" name="day" id="day">
+                                    <optgroup label="Day">
+                                    </optgroup>
+                                </select></div>
+                            <div class="col-md-3 mb-3"><select class="form-select form-select-md"
+                                    aria-label=".form-select-md example" name="year" id="year">
+                                    <optgroup label="Year">
+                                    </optgroup>
+                                </select></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Home Address:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Address" aria-label="address" required=""></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" style="padding-top: 30px;">
+                        <h4 style="padding-bottom: 20px;">Account Information:</h4>
+                        <div class="row">
+                            <p class="col-md-4">Username:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Username" aria-label="username" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Email Address:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Email Address" aria-label="email" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Confirm Email:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Confirm Email" aria-label="confirm-email" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Password:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Password" aria-label="password" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Confirm Password:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Confirm Password" aria-label="confirm-password" required=""></div>
+                        </div>
+                        <div class="row">
+                            <p class="col-md-4">Mobile Number:</p>
+                            <div class="col-lg-8 mb-3"><input class="form-control form-control" type="text"
+                                    placeholder="Mobile Number" aria-label="number" required=""></div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-lg-flex justify-content-lg-end pb-4"><button
+                            class="btn-lg btn-primary m-4" type="submit">Submit</button></div>
+                </div>
+            </form>
+        </div>
+    </section><!-- End: Highlight Clean -->
+    <!-- Start: Footer Clean -->
+    <footer class="footer-clean" style="font-family: 'Lexend Deca', sans-serif;background: rgb(129,27,27);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Start: Services -->
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Document Transfer</a></li>
+                        <li><a href="#">Cloud Service</a></li>
+                    </ul>
+                </div><!-- End: Services -->
+                <!-- Start: About -->
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3 style="color: rgb(255,255,255);">About Us</h3>
+                    <ul>
+                        <li style="color: rgb(255,255,255);"><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Legacy</a></li>
+                    </ul>
+                </div><!-- End: About -->
+                <!-- Start: Careers -->
+                <div class="col-sm-4 col-md-3 item" style="color: rgb(255,255,255);">
+                    <h3>Careers</h3>
+                    <ul>
+                        <li><a href="#">Job openings</a></li>
+                        <li><a href="#">Employee success</a></li>
+                        <li><a href="#">Benefits</a></li>
+                    </ul>
+                </div><!-- End: Careers -->
+                <!-- Start: Social Icons -->
+                <div class="col-lg-3 item social" style="color: rgb(255,255,255);"><a href="#"><i
+                            class="icon ion-social-facebook"></i></a><a href="#"><i
+                            class="icon ion-social-twitter"></i></a><a href="#"><i
+                            class="icon ion-social-instagram"></i></a>
+                    <p class="copyright">Team 5 © 2021</p>
+                </div><!-- End: Social Icons -->
+            </div>
+        </div>
+    </footer><!-- End: Footer Clean -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.min.js?h=a2cee23efd5962953aee193ace61225c"></script>
+    <script src="signup.js"></script>
+</body>
+
+</html>
